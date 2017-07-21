@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mwtsDB.sqlmap.mwtsSQL.mappers.LoginSQL">
+	<select id="checkUserID" parameterType="Login" resultType="Integer">
+		select count(idx) from teamusers where userid=#{userid}
+	</select>
+	<insert id="makeUserID" parameterType="Login">
+		insert teamusers(userid,userpassword) values(#{userid},#{userpassword})
+	</insert>
+	<select id="fetchUserPassword" parameterType="Login" resultType="String">
+		select userpassword from teamusers where userid=#{userid}
+	</select>
+</mapper>
